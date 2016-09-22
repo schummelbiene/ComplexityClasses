@@ -1,0 +1,46 @@
+\documentclass[a4paper, 9pt, landscape]{article}
+\usepackage{import}
+\import{/}{head}
+
+\usepackage{graphicx}
+
+
+\title{Complexity Classes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{table}[ht!]
+  \centering
+  \begin{tabular}[ht!]{l | p{7cm}| p{14cm}| l}
+    & Function problem & $Q = (I, R)$ over $\Sigma$, $I \subseteq \Sigma^*$ instances, $R \subseteq \Sigma^* \times \Sigma^*$, both decidable in polytime, $F(x)$ denotes the set of all solutions of an instance $x \in I$. A TM $\cT$ solves $Q$ if it returns for every $x$ an $y \in F(x)$, so $(x, y) \in R$, if $F(x) \neq \emptyset$ and 'no' otherwise. & 1.3 \\ \hline
+    FNP &Polynomially balanced function problems & Polynomially balanced: a polynomial $p$ exists, such that for all $(x, y) \in R$ the inequality $\norm y \leq p(\norm x)$ holds.  & 1.3\\ \hline
+    TFNP& Total function problems & Total: for every $x \in I$ the set of solutions $F(x)$ is nonempty. & 1.7\\ \hline
+    NPO & NP-optimization problems& Tuple $(A, cost, opt)$, where $A$ is a total function problem, $cost(y) \in \N\setminus\set 0$ for every solution $y$ of $A$ and $opt \in \set{\min, \max}$.
+
+                                                                                                                                                                                                                                                                                                                                                                Optimal cost for $x \in I$: $OPT(x) \coloneqq opt_{y \in F(x)}cost(y)$ & 1.8\\ \hline
+          PTAS & Polynomial-time $\epsilon$-approximation scheme && 1.14\\ \hline
+    
+    
+    SNP & strictly NP & Class of all NP-problems reducible to graph problems of the form
+                        \begin{align*}
+                          \set{G |\, \exists S \forall x_1, \dots \forall x_k. \phi(S, G, x_1, \dots, x_k)}
+                        \end{align*}
+                        and $\phi$ is a quantifier-free FOL formula.  & 1.21 \\ \hline
+    MaxSNP\textsubscript{O} &SNP for maximization problems & Class of all max-optimization problems of the form
+                                                             \begin{align*}
+                                                               \max_S\norm{\set{(x_1, \dots, x_k)|\, \phi(S, G_1, \dots, G_m, x_1, \dots, x_k)}}
+                                                             \end{align*}
+                                                             and $\phi$ is a quantifier-free FOL formula.  & 1.21 \\ \hline
+    MaxSNP & & All optimization problems L-reducible to a MaxSNP\textsubscript{O} problem & 1.21 \\ \hline
+    &MaxSNP-Completeness & $A$ is MaxSNP-complete, if all MaxSNP-problems reduce to $A$ and $A \in$MaxSNP   &1.27 \\ \hline
+  \end{tabular}
+  \caption{Overview of Complexity Classes}
+  \label{tab:classes}
+\end{table}
+
+
+
+\end{document}
